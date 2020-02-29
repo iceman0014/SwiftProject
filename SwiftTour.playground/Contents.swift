@@ -753,5 +753,12 @@ oddDigits.intersection(eventDigits).sorted()
 oddDigits.subtracting(singleDigitPrimeNumber).sorted()
 oddDigits.symmetricDifference(singleDigitPrimeNumber).sorted()
 
-//------------------end---------------------
+let houseAnimals: Set = ["🐶", "🐱"]
+let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let cityAnimals: Set = ["🐦", "🐭"]
+
+houseAnimals.isSubset(of: farmAnimals)
+farmAnimals.isSuperset(of: houseAnimals)
+houseAnimals.isDisjoint(with: cityAnimals)
+//---------------------------------------
 
