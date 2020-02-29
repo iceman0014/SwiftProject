@@ -743,3 +743,13 @@ favorite.contains("Rock")
 for fav in favorite.sorted() {
     print(fav)
 }
+
+let oddDigits: Set = [1,3,5,7,9]
+let eventDigits: Set = [0,2,4,6,8]
+let singleDigitPrimeNumber: Set = [2,3,5,7]
+
+oddDigits.union(eventDigits).sorted()
+oddDigits.intersection(eventDigits).sorted()
+oddDigits.subtracting(singleDigitPrimeNumber).sorted()
+oddDigits.symmetricDifference(singleDigitPrimeNumber).sorted()
+
