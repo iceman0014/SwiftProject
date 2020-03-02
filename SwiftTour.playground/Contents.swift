@@ -829,3 +829,28 @@ if #available(iOS 10,macOS 10.12, *) {
 }else {
     print("2")
 }
+
+
+func arithmeticMean(_ numbers: Double...) -> Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    
+    return total/Double(numbers.count)
+}
+
+arithmeticMean(1,2,3,4,5)
+arithmeticMean(3,8.25,18.75)
+
+
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var a = 1
+var b = 2
+swapTwoInts(&a, &b)
+1
