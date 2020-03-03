@@ -712,7 +712,7 @@ let greeting = "Hello, world!"
 let index2 = greeting.firstIndex(of: ",") ?? greeting.endIndex
 let begining = greeting[..<index2]
 */
-
+/*
 //----------------Array --------------------
 var array = Array(repeating: 0.0, count: 3)
 
@@ -853,4 +853,60 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 var a = 1
 var b = 2
 swapTwoInts(&a, &b)
-1
+
+print(a,b)
+
+*/
+
+//----------------------closure----------------------------
+let name = ["Chris","Alex","Ewa","Barry","Danellia"]
+func backward(_ s1: String, _ s2: String) -> Bool {
+    return s1 > s2
+}
+
+var reversedNames = name.sorted(by: backward(_:_:))
+reversedNames = name.sorted(by: {(s1: String,s2: String) -> Bool in
+    return s1 > s2
+    
+})
+
+reversedNames = name.sorted(by: {s1,s2 in return s1>s2})
+reversedNames = name.sorted(by: {s1,s2 in s1>s2})
+reversedNames = name.sorted(by: {$0 > $1})
+reversedNames = name.sorted(by: >)
+//The parameters to functions and closures are always constants.
+let digitNames = [0:"zero",1:"one",2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine"]
+let numbers = [16,58,123];
+
+let strings = numbers.map{(number) -> String in
+    var number = number
+    var output = ""
+    repeat{
+        //dictionary subscripts return an optional value to indicate that the dictionary lookup can fail if the key does not exist.
+        output = digitNames[number % 10]! + output
+        number /= 10
+    }while number > 0
+    
+    return output
+}
+
+print(strings)
+
+
+func makeIncrementer(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func incrementer() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+
+let incrementByTen = makeIncrementer(forIncrement: 10)
+
+incrementByTen()
+incrementByTen()
+incrementByTen()
+
+
+
