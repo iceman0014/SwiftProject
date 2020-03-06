@@ -857,7 +857,7 @@ swapTwoInts(&a, &b)
 print(a,b)
 
 */
-
+/*
 //----------------------closure----------------------------
 let name = ["Chris","Alex","Ewa","Barry","Danellia"]
 func backward(_ s1: String, _ s2: String) -> Bool {
@@ -908,5 +908,440 @@ incrementByTen()
 incrementByTen()
 incrementByTen()
 
+*/
+/*
+enum CompassPoint {
+    case south
+    case north
+    case west
+    case east
+}
+
+enum Beverage: CaseIterable {
+    case coffee, tea, juice
+}
+
+let numberOfChoices = Beverage.allCases.count
+
+for beverage in Beverage.allCases {
+    print(beverage)
+}
+enum Barcode {
+    case upc(Int,Int,Int,Int)
+    case qrCode(String)
+}
+var productBarcode = Barcode.upc(8, 85909, 51226, 3)
+
+productBarcode = .qrCode("ABCDEDFFFFFFFF")
+
+switch productBarcode {
+case let .upc(numberSystem, manufacturer, product, check):
+    print("UPC:\(numberSystem)")
+case let .qrCode(productCode):
+    print("\(productBarcode)")
+}
+
+enum Planet: Int {
+    case mercury = 1,venus, earth, mars, jupiter, saturn, uranus, neptune
+}
+
+enum CompassString: String {
+    case north, south, east, west
+}
+
+let earthOrder = Planet.earth.rawValue
+let sunsetDirection = CompassString.west.rawValue
+
+let possiblePlanet = Planet(rawValue: 7)
+
+indirect enum ArithmeticExpression {
+    case number(Int)
+    case addition(ArithmeticExpression, ArithmeticExpression)
+    case multiplication(ArithmeticExpression,ArithmeticExpression
+    )
+}
+//(5 + 4)*2
+let five = ArithmeticExpression.number(5)
+let four = ArithmeticExpression.number(4)
+let two = ArithmeticExpression.number(2)
+let sum = ArithmeticExpression.addition(five, four)
+let product = ArithmeticExpression.multiplication(sum, two)
+
+func evaluate(_ expression: ArithmeticExpression) -> Int {
+    switch expression {
+    case let .number(value):
+        return value
+    case let .addition(left, right):
+       return evaluate(left) + evaluate(right)
+    case let .multiplication(left, right):
+        return evaluate(left) * evaluate(right)
+    }
+}
+
+print(evaluate(product))
+
+struct Resolution {
+    var width = 0
+    var height = 0
+}
+
+class VideoModel {
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+
+var someResolutio = Resolution()
+someResolutio.width = 100
+
+var someVideoMode = VideoModel()
+
+var anotherResolution = someResolutio
+anotherResolution.width = 20
+
+let hd = Resolution(width:250, height:1000)
+
+print("\(someResolutio.width) and \(anotherResolution.width)")
 
 
+var tenEighty = VideoModel()
+tenEighty.resolution = hd
+tenEighty.interlaced = true
+tenEighty.name = "1080i"
+tenEighty.frameRate = 25.0
+
+let anotherTenEighty = tenEighty
+
+if anotherTenEighty === tenEighty {
+    print("identical to")
+}else {
+    print("not identical to")
+}
+
+
+struct RangeOfLenght {
+    var firstValue: Int
+    let length: Int
+}
+
+let rangeOfFouritems = RangeOfLenght(firstValue: 0, length: 4)
+//RangeOfLenght.firstValue = 8
+
+class DataImporter {
+    var fileName = "data.txt"
+}
+
+class DataManager {
+    lazy var importer = DataImporter()
+    var data = [String]()
+}
+
+var manager = DataManager()
+manager.data.append("some data")
+manager.data.append("some more data")
+
+print(manager)
+
+
+struct Point {
+    //definate x-,y-coordinate
+    var x = 0.0, y = 0.0
+}
+
+struct Size {
+    //definate width and height
+    var width = 0.0, height = 0.0
+}
+
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    var centerPoint: Point {
+        get {
+//            let x = origin.x + size.width/2
+//            let y = origin.y + size.height/2
+//            return Point(x: x, y: y)
+            Point(x: origin.x + size.width/2, y: origin.y + size.height/2)
+        }
+        set(newCenter) {
+            origin.x = newCenter.x - size.width/2
+            origin.y = newCenter.y - size.width/2
+        }
+    }
+}
+
+var square = Rect(origin: Point(x: 0.0, y: 0.0), size: Size(width: 10, height: 10))
+print(square.centerPoint)
+
+square.centerPoint = Point(x: 15, y: 15)
+print(square.origin.x,square.origin.y)
+
+
+struct Cuboid {
+    var width = 0.0, height = 0.0, depth = 0.0
+    var volume: Double {
+        return width * height * depth
+    }
+}
+let fourByfiveBytwo = Cuboid(width: 4, height: 5, depth: 2)
+print("the volume of fourByfiveByTwo is \(fourByfiveBytwo)")
+
+
+class StepCounter {
+    var totalSteps: Int = 0 {
+        willSet(newTotalSteps) {
+            print("About to set totalSteps to \(newTotalSteps)")
+        }
+        didSet {
+            if totalSteps > oldValue {
+                print("Added \(totalSteps - oldValue) steps")
+            }
+        }
+    }
+}
+
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+
+stepCounter.totalSteps = 300
+
+@propertyWrapper
+struct TwelveOrLess {
+    private var number: Int
+    init() {
+        self.number = 0
+    }
+    var wrappeValue: Int {
+        get { return number}
+        set { number = min(newValue, 12)}
+    }
+}
+
+struct SmallRectangle {
+    @TwelveOrLess var height: Int
+    @TwelveOrLess var width: Int
+}
+
+var rectangle = SmallRectangle(height: 10, width: 10)
+print(rectangle.height)
+
+rectangle.height = 10
+print(rectangle.height)
+ 
+rectangle.height = 23
+print(rectangle.height)
+*/
+/*
+class Counter {
+    var count = 0
+    //instance method
+    func increment() {
+        self.count += 1
+    }
+    //instance method
+    func increment(by amount: Int) {
+        count += amount
+    }
+    //intance method
+    func  reset() {
+        count = 0
+    }
+}
+
+
+let counter = Counter()
+//the initial counter value is 0
+counter.increment()
+//the counter's value is now 1
+counter.increment(by: 5)
+//the counter's value is now 6
+counter.reset()
+//the counter's value is now 0
+
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+//        x += deltaX
+//        y += deltaY
+        self = Point(x: x + deltaX, y: y + deltaY)
+    }
+}
+
+var somePoint = Point(x: 1.0, y: 1.0)
+somePoint.moveBy(x: 2.0, y: 3.0)
+print("The point is now at\(somePoint.x),\(somePoint.y)")
+
+var fixedPoint = Point(x: 3.0, y: 3.0)
+fixedPoint.moveBy(x: 4.0, y: 4.0)
+
+enum TristateSwitch {
+    case off, low, high
+    mutating func next() {
+        switch self {
+        case .off:
+            self = .low
+        case .low:
+            self = .high
+        case .high:
+            self = .off
+        }
+    }
+}
+var ovenLight = TristateSwitch.low
+ovenLight.next()
+//ovenLight is now equal to .hight
+
+ovenLight.next()
+//ovenLight is now equal to .off
+
+class SomeClass {
+    class func someTypeMethod(){
+        //type method implementation goes here
+        print("type method implementation goes here")
+    }
+}
+
+SomeClass.someTypeMethod()
+
+//The LevelTracker tructure keeps track of the highest level that any player has unlocked
+struct LevelTracker {
+    //type property
+    static var hightestUnlockedLevel = 1
+    //instance property,to check the level that a player is currently playing
+    var currentLevel = 1
+    
+    //type function
+    static func unlock(_ level: Int) {
+        if level > hightestUnlockedLevel {
+            hightestUnlockedLevel = level
+        }
+    }
+    //type function
+    static func isUnlocked(_ level: Int) -> Bool {
+        //type method can access the hightestUnlockedLevel type property without your needing to write LevelTracker.
+        return level <= hightestUnlockedLevel
+    }
+    
+    //instance method Before updating currentLevel,this method checks whether the requested new level is already unlocked.
+    //ignore the return value
+    @discardableResult
+    mutating func advance(to level: Int) -> Bool {
+        if LevelTracker.isUnlocked(level) {
+            currentLevel = level
+            return true
+        }else {
+            return false
+        }
+    }
+}
+
+class Player {
+    //instance property to tack that player's progress
+    var tracker = LevelTracker()
+    let playerName: String
+    //instance method, this method unlocks the new level for all players and updates the player's progress to move them to the next level
+    func complete(level: Int) {
+        LevelTracker.unlock(level + 1)
+        tracker.advance(to: level + 1)
+    }
+    init(name: String) {
+        playerName = name
+    }
+}
+
+var player = Player(name: "Argyrios")
+player.complete(level: 1)
+print("highest unlocked level is now \(LevelTracker.hightestUnlockedLevel) and \n currentLevel is \(player.tracker.currentLevel)")
+
+
+var anotherPlayer = Player(name: "Annee")
+anotherPlayer.complete(level: 5)
+print("highest unlocked level is now \(LevelTracker.hightestUnlockedLevel) and \n currentLevel is \(anotherPlayer .tracker.currentLevel)")
+
+player = Player(name: "Beto")
+if player.tracker.advance(to: 6){
+    print("player is now on level 6")
+}else {
+    print("level 6 has not been unlocked")
+}
+*/
+
+//-------------------Subscripts----------------------
+//subscript(index: Int) -> Int {
+//    get {
+//        //return an appropriate subscript value here.
+//    }
+//    set {
+//        //Perform a suitable setting action here.
+//    }
+//}
+
+//read-only subscript
+//subscript(index: Int) -> Int {
+//    //return an appropriate subscript value here.
+//}
+/*
+struct TimesTable {
+    let multiplier: Int
+    subscript(index: Int) -> Int {
+        return multiplier * index
+    }
+}
+
+let threeTimesTable = TimesTable(multiplier: 3)
+print("six times three is \(threeTimesTable[6])")
+
+
+struct Matrix {
+    let rows: Int, columns: Int
+    var grid: [Double]
+    init(rows: Int, columns: Int) {
+        self.rows = rows
+        self.columns = columns
+        grid = Array(repeating: 0.0, count: (rows * columns))
+    }
+    
+    func indexIsValid(row: Int, column: Int) -> Bool {
+        return row >= 0 && row < rows && column >= 0 && column < columns
+    }
+    subscript(row: Int, column: Int) -> Double {
+        get {
+            assert(indexIsValid(row: row, column: column), "Index out of range")
+            return grid[(row * columns) + column]
+        }
+        set {
+            assert(indexIsValid(row: row, column: column), "Index out of range.")
+            grid[(row * columns) + column] = newValue
+        }
+    }
+}
+
+var matrix = Matrix(rows: 2, columns: 2)
+
+matrix[0,1] = 1.5
+matrix[1,0] = 3.2
+print(matrix)
+
+let someValue = matrix[2,2]
+//This triggers an assert, because [2,2] is outside of the matrix bounds.
+
+
+enum Planet: Int {
+    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
+    static subscript(n: Int) -> Planet {
+        return Planet(rawValue: n)!
+    }
+}
+
+let mars = Planet[4]
+print(mars)
+
+//enum newPlanet: Planet {
+//    case newMercury
+//
+//}
+//
+//let newP = newPlanet[1]
+//print(newP)
+*/
